@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Educação do Campo | Estrelas Azuis que Guiam o Saber</title>
+    <!-- Google Fonts + Font Awesome 6 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #1e2a3a;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* PALETA AZUL E BRANCO + ESTRELAS AZUIS */
+        :root {
+            --azul-profundo: #0b3b5f;
+            --azul-medio: #1f6392;
+            --azul-claro: #d4e6f1;
+            --azul-suave: #eef4fc;
+            --branco-puro: #ffffff;
+            --cinza-azulado: #f5f8fc;
+            --azul-escuro-texto: #0a2f4a;
+            --sombra: rgba(0, 20, 40, 0.08);
+            --detalhe-azul: #c7e2f2;
+            --estrela-azul: #1f6392;      /* estrela principal azul médio */
+            --estrela-azul-clara: #9ac4de; /* estrela mais suave */
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* cabeçalho */
+        header {
+            background: var(--branco-puro);
+            backdrop-filter: blur(0px);
+            background-color: rgba(255, 255, 255, 0.98);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px var(--sombra);
+            border-bottom: 1px solid var(--azul-claro);
+        }
+
+        .navbar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            gap: 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--azul-profundo);
+        }
+
+        .logo i {
+            font-size: 2rem;
+            color: var(--azul-medio);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 600;
+            color: #1e4663;
+            transition: 0.2s;
+            font-size: 1rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--azul-medio);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--azul-medio);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .btn:hover {
+            background-color: var(--azul-profundo);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(0, 50, 80, 0.12);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--azul-medio);
+            color: var(--azul-medio);
+        }
+
+        .btn-outline:hover {
+            background: var(--azul-medio);
+            color: white;
+            border-color: var(--azul-medio);
+        }
+
+        /* Hero com estrelas azuis flutuantes */
+        .hero {
+            background: linear-gradient(135deg, #eef4fc 0%, #ffffff 100%);
+            padding: 60px 0 70px;
+            border-bottom: 1px solid var(--azul-claro);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "★ ☆ ★ ☆ ★";
+            font-size: 8rem;
+            color: rgba(31, 99, 146, 0.08);
+            position: absolute;
+            bottom: -30px;
+            right: -30px;
+            white-space: nowrap;
+            pointer-events: none;
+            transform: rotate(-8deg);
+            font-family: monospace;
+        }
+
+        .hero::after {
+            content: "✦ ✧ ✦ ✧ ✦";
+            font-size: 5rem;
+            color: rgba(31, 99, 146, 0.1);
+            position: absolute;
+            top: 20px;
+            left: -20px;
+            pointer-events: none;
+            font-family: monospace;
+        }
+
+        .hero-grid {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content {
+            flex: 1.2;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            font-family: 'Merriweather', serif;
+            color: var(--azul-profundo);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #2c4b6e;
+            margin-bottom: 32px;
+            max-width: 90%;
+        }
+
+        .hero-image {
+            flex: 1;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.15);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+
+        .hero-image:hover img {
+            transform: scale(1.03);
+        }
+
+        section {
+            padding: 70px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-family: 'Merriweather', serif;
+            font-weight: 700;
+            color: var(--azul-profundo);
+            margin-bottom: 16px;
+        }
+
+        .section-title i.fa-star,
+        .section-title i.fa-star-of-life {
+            color: var(--estrela-azul);
+            font-size: 1.8rem;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+
+        .section-sub {
+            text-align: center;
+            color: #3a6b8f;
+            max-width: 680px;
+            margin: 0 auto 48px auto;
+            font-size: 1.1rem;
+        }
+
+        /* Cards com estrelas azuis */
+        .cards-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .card {
+            background: var(--branco-puro);
+            border-radius: 28px;
+            padding: 30px 24px;
+            flex: 1 1 280px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
+            transition: all 0.25s ease;
+            border: 1px solid var(--azul-claro);
+            text-align: center;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 30px rgba(18, 82, 120, 0.1);
+            border-color: #aac9e2;
+        }
+
+        /* estrelinha azul decorativa no canto dos cards */
+        .card::before {
+            content: "★";
+            position: absolute;
+            top: 12px;
+            right: 18px;
+            font-size: 1.2rem;
+            color: var(--estrela-azul-clara);
+            opacity: 0.6;
+        }
+
+        .card i {
+            font-size: 2.8rem;
+            color: var(--azul-medio);
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: var(--azul-profundo);
+        }
+
+        .card p {
+            color: #2a4f6e;
+        }
+
+        /* Seção About Flex */
+        .about-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h2 {
+            font-size: 1.9rem;
+            font-family: 'Merriweather', serif;
+            margin-bottom: 20px;
+            color: var(--azul-profundo);
+        }
+
+        .about-text p {
+            margin-bottom: 18px;
+            color: #2c4a68;
+        }
+
+        .about-img {
+            flex: 0.9;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* estatísticas */
+        .stats {
+            background: var(--azul-suave);
+            border-top: 1px solid var(--azul-claro);
+            border-bottom: 1px solid var(--azul-claro);
+        }
+
+        .stats-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            text-align: center;
+            gap: 30px;
+        }
+
+        .stat-item {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--azul-profundo);
+            font-family: 'Merriweather', serif;
+        }
+
+        .stat-label {
+            font-weight: 600;
+            color: #2c5a7a;
+            font-size: 1rem;
+        }
+
+        /* Depoimentos com estrelas azuis de avaliação */
+        .testimonials {
+            background: #f9fbfe;
+        }
+
+        .testi-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .testi-card {
+            background: var(--branco-puro);
+            border-radius: 28px;
+            padding: 28px;
+            max-width: 340px;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.03);
+            border: 1px solid var(--azul-claro);
+            transition: transform 0.2s;
+        }
+
+        .testi-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .testi-card i.fa-quote-left {
+            color: var(--azul-medio);
+            font-size: 1.7rem;
+            margin-bottom: 16px;
+            opacity: 0.6;
+        }
+
+        .testi-card p {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #1e3f5a;
+        }
+
+        .rating {
+            margin: 15px 0 12px 0;
+            color: var(--estrela-azul);
+            letter-spacing: 3px;
+            font-size: 1.2rem;
+        }
+
+        .user {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .user i {
+            font-size: 2rem;
+            color: var(--azul-medio);
+        }
+
+        .user span {
+            font-weight: 700;
+            color: #0a4c6e;
+        }
+
+        /* seção de reconhecimento com estrelas azuis */
+        .recognition {
+            background: linear-gradient(to right, #f0f6fd, #ffffff);
+        }
+
+        .stars-badge {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .stars-badge i {
+            font-size: 2.2rem;
+            color: var(--estrela-azul);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .recognition-text {
+            max-width: 750px;
+            margin: 0 auto;
+            text-align: center;
+            background: rgba(31, 99, 146, 0.03);
+            padding: 30px;
+            border-radius: 48px;
+            border: 1px solid var(--azul-claro);
+        }
+
+        .recognition-text h3 {
+            color: var(--azul-profundo);
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+        }
+
+        /* rodapé */
+        footer {
+            background: var(--azul-profundo);
+            color: #cbe4f5;
+            padding: 48px 0 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::after {
+            content: "✦ ✧ ★ ☆ ✦";
+            font-size: 6rem;
+            color: rgba(255, 255, 255, 0.03);
+            position: absolute;
+            bottom: -20px;
+            right: 0;
+            pointer-events: none;
+            font-family: monospace;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-col h4 {
+            font-size: 1.2rem;
+            margin-bottom: 16px;
+            color: #e8f0fe;
+        }
+
+        .footer-col p, .footer-col a {
+            color: #cde2f2;
+            text-decoration: none;
+            line-height: 1.6;
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .social i {
+            font-size: 1.5rem;
+            margin-right: 16px;
+            transition: 0.2s;
+        }
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid #2c6c96;
+            padding-top: 28px;
+            font-size: 0.85rem;
+            color: #b8d2e8;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+            }
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            .hero-content p {
+                max-width: 100%;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .about-text h2 {
+                font-size: 1.6rem;
+            }
+            .stats-grid {
+                gap: 20px;
+            }
+            .stat-number {
+                font-size: 2.2rem;
+            }
+            .hero::before, .hero::after {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 18px;
+            }
+            .btn {
+                padding: 0.6rem 1.2rem;
+            }
+            .stars-badge i {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <i class="fas fa-seedling"></i>
+                    <span>Escola do Campo Viva</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#metodologias">Metodologias</a></li>
+                    <li><a href="#depoimentos">Depoimentos</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+                <div>
+                    <a href="#" class="btn btn-outline" style="font-size:0.9rem;"><i class="fas fa-hand-holding-heart"></i> Apoie</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero section com estrelas azuis no background -->
+        <section id="inicio" class="hero">
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <h1>Educação que brota da terra, floresce na comunidade <i class="fas fa-star" style="color: var(--estrela-azul); font-size: 2rem;"></i></h1>
+                    <p>Escolas do campo são espaços de resistência, saber tradicional e inovação. Conheça a pedagogia da alternância, o respeito à cultura rural e o direito de aprender com os pés no chão.</p>
+                    <a href="#sobre" class="btn"><i class="fas fa-leaf"></i> Explorar mais</a>
+                </div>
+                <div class="hero-image">
+                    <img src="https://picsum.photos/id/169/600/450" alt="Crianças em atividade no campo" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Sobre -->
+        <section id="sobre">
+            <div class="container about-flex">
+                <div class="about-text">
+                    <h2><i class="fas fa-tree"></i> O que são as Escolas do Campo? <i class="fas fa-star" style="color: var(--estrela-azul); font-size: 1.5rem;"></i></h2>
+                    <p>As escolas do campo nascem da luta por uma educação que valorize a vida rural, os ciclos da natureza, os saberes das comunidades tradicionais e a agricultura familiar. Diferente do modelo urbano, o currículo se conecta à realidade local, fortalecendo a identidade camponesa e o desenvolvimento sustentável.</p>
+                    <p>No Brasil, a Educação do Campo é uma conquista legal (Diretrizes Operacionais/CNE) e busca superar o abandono histórico, garantindo infraestrutura adequada, transporte escolar, merenda com produtos da agricultura familiar e formação de professores que compreendam esse universo.</p>
+                    <p><strong>“Valorizar quem planta e colhe, é semear cidadania e justiça social.”</strong> <i class="fas fa-star-of-life" style="color: var(--azul-medio);"></i></p>
+                </div>
+                <div class="about-img">
+                    <img src="https://picsum.photos/id/264/500/400" alt="Crianças em roda de leitura no campo" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <!-- Metodologias -->
+        <section id="metodologias" style="background-color: #f8fafd;">
+            <div class="container">
+                <h2 class="section-title"><i class="fas fa-star"></i> Metodologias e vivências <i class="fas fa-star"></i></h2>
+                <div class="section-sub">Práticas que conectam o aprender ao fazer, o céu à terra e a escola à comunidade.</div>
+                <div class="cards-grid">
+                    <div class="card">
+                        <i class="fas fa-exchange-alt"></i>
+                        <h3>Pedagogia da Alternância</h3>
+                        <p>Os estudantes alternam tempo na escola e tempo na comunidade, aplicando o conhecimento na prática do campo, fortalecendo vínculos familiares.</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-seedling"></i>
+                        <h3>Currículo contextualizado</h3>
+                        <p>Matemática com medidas agrárias, ciências com culturas e biomas locais, história a partir da luta pela terra.</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-chalkboard-user"></i>
+                        <h3>Professor-extensionista</h3>
+                        <p>Docentes que vivenciam a realidade rural, atuando como mediadores entre o saber científico e o saber popular.</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-hand-sparkles"></i>
+                        <h3>Horta-escola e agroecologia</h3>
+                        <p>Espaços de aprendizado prático, alimentação saudável e conservação ambiental, integrando todas as disciplinas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Estatísticas -->
+        <div class="stats">
+            <div class="container stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">+1.200</div>
+                    <div class="stat-label">Escolas do campo mapeadas</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">25+</div>
+                    <div class="stat-label">Anos de luta por direitos</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">82%</div>
+                    <div class="stat-label">Comunidades valorizadas</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">150k</div>
+                    <div class="stat-label">Alunos beneficiados</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Desafios -->
+        <section style="background-color: #ffffff;">
+            <div class="container about-flex" style="flex-direction: row-reverse;">
+                <div class="about-text">
+                    <h2><i class="fas fa-hand-holding-heart"></i> Desafios e conquistas da educação rural <i class="fas fa-star" style="color: var(--estrela-azul);"></i></h2>
+                    <p>Embora avanços tenham sido alcançados, muitas escolas do campo ainda enfrentam estradas precárias, falta de internet e materiais específicos. Por outro lado, movimentos sociais e políticas públicas (como o Programa Nacional de Educação do Campo - PRONACAMPO) têm fortalecido a formação de educadores e a infraestrutura.</p>
+                    <p>Iniciativas de educação digital com metodologias híbridas, bibliotecas comunitárias e intercâmbio entre escolas da mesma região mostram que é possível inovar sem perder as raízes.</p>
+                    <a href="#" class="btn"><i class="fas fa-graduation-cap"></i> Saiba como contribuir</a>
+                </div>
+                <div class="about-img">
+                    <img src="https://picsum.photos/id/15/500/400" alt="Feira de saberes da escola do campo" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <!-- Depoimentos com avaliação por estrelas azuis -->
+        <section id="depoimentos" class="testimonials">
+            <div class="container">
+                <h2 class="section-title"><i class="fas fa-star-of-life"></i> Quem vive a escola do campo <i class="fas fa-star"></i></h2>
+                <div class="section-sub">Vozes de educadores, estudantes e famílias que transformam a realidade rural através da educação.</div>
+                <div class="testi-grid">
+                    <div class="testi-card">
+                        <i class="fas fa-quote-left"></i>
+                        <p>"A alternância nos deu a possibilidade de aprender técnicas agroecológicas na escola e aplicar em casa. Hoje nossa colheita aumentou e o conhecimento flui entre gerações."</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <div class="user">
+                            <i class="fas fa-user-astronaut"></i>
+                            <span>Maria da Paz, aluna do 9º ano</span>
+                        </div>
+                    </div>
+                    <div class="testi-card">
+                        <i class="fas fa-quote-left"></i>
+                        <p>"Sou professor há 12 anos numa escola multisseriada do interior. Cada dia aprendo com meus alunos. Eles me ensinam sobre plantas medicinais, e eu levo o conhecimento científico. Uma troca linda."</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <div class="user">
+                            <i class="fas fa-chalkboard"></i>
+                            <span>José Carvalho, educador</span>
+                        </div>
+                    </div>
+                    <div class="testi-card">
+                        <i class="fas fa-quote-left"></i>
+                        <p>"Antes, meu filho não queria estudar porque o conteúdo não fazia sentido. Agora, na escola do campo, ele ama ir para a horta-escola e já fala sobre preservação de nascentes."</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <div class="user">
+                            <i class="fas fa-farm"></i>
+                            <span>Raimunda Sousa, agricultora</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nova seção: Reconhecimento com estrelas azuis -->
+        <section class="recognition">
+            <div class="container">
+                <div class="stars-badge">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <div class="recognition-text">
+                    <h3>Reconhecimento e esperança ★</h3>
+                    <p>Projetos de educação do campo têm recebido nota máxima (5 estrelas) em avaliações comunitárias e prêmios nacionais de inovação social. O trabalho de educadores e estudantes é <strong>estrela-guia</strong> para um futuro mais justo no Brasil rural.</p>
+                    <p><i class="fas fa-star" style="color: var(--estrela-azul);"></i> <i class="fas fa-star" style="color: var(--estrela-azul);"></i> <i class="fas fa-star" style="color: var(--estrela-azul);"></i> <i class="fas fa-star" style="color: var(--estrela-azul);"></i> <i class="fas fa-star" style="color: var(--estrela-azul);"></i> <strong>Excelência em educação contextualizada</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contato final -->
+        <section id="contato" style="background: #ecf5fa;">
+            <div class="container" style="text-align: center; max-width: 800px;">
+                <h2 class="section-title" style="font-size: 2rem;"><i class="fas fa-star"></i> Junte-se a essa semente <i class="fas fa-star"></i></h2>
+                <p style="margin-bottom: 32px; font-size: 1.1rem;">Apoie programas de formação continuada, doe livros ou compartilhe seu tempo. Toda parceria fortalece a educação do campo e garante o futuro de milhares de crianças e jovens.</p>
+                <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+                    <a href="#" class="btn"><i class="fas fa-envelope"></i> Quero colaborar</a>
+                    <a href="#" class="btn btn-outline"><i class="fas fa-calendar-alt"></i> Agendar visita</a>
+                </div>
+                <div style="margin-top: 48px; display: flex; justify-content: center; gap: 28px;">
+                    <i class="fab fa-instagram" style="font-size: 1.8rem; color: #1f6392; transition: 0.2s; cursor: pointer;"></i>
+                    <i class="fab fa-facebook" style="font-size: 1.8rem; color: #1f6392; transition: 0.2s; cursor: pointer;"></i>
+                    <i class="fab fa-youtube" style="font-size: 1.8rem; color: #1f6392; transition: 0.2s; cursor: pointer;"></i>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4><i class="fas fa-seedling"></i> Escola do Campo Viva</h4>
+                    <p>Por uma educação que respeita os ciclos da terra e os saberes das comunidades rurais. Construindo cidadania, agroecologia e justiça social.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Mapa do site</h4>
+                    <p><a href="#inicio">Início</a><br><a href="#sobre">Sobre</a><br><a href="#metodologias">Metodologias</a><br><a href="#depoimentos">Depoimentos</a></p>
+                </div>
+                <div class="footer-col">
+                    <h4>Contato</h4>
+                    <p><i class="fas fa-phone-alt"></i> (61) 99999-1234<br>
+                    <i class="fas fa-envelope"></i> contato@escoladocampo.org<br>
+                    <i class="fas fa-map-marker-alt"></i> Brasília/DF - Brasil</p>
+                </div>
+                <div class="footer-col social">
+                    <h4>Redes</h4>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-whatsapp"></i>
+                    <i class="fab fa-youtube"></i>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Educação do Campo - Todos os direitos reservados | ★ Site iluminado por estrelas azuis que representam cada conquista camponesa ★
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
